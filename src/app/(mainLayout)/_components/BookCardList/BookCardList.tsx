@@ -7,6 +7,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import { ChevronRight } from "lucide-react";
+import Link from "next/link";
 import BookCard from "../BookCard/BookCard";
 const items = [
   {
@@ -96,14 +97,16 @@ const BookCardList = () => {
           <CarouselContent>
             {items.map((item, index) => (
               <CarouselItem key={index} className="lg:basis-1/5">
-                <BookCard
-                  image={item.image}
-                  title={item.title}
-                  author={item.author}
-                  price={item.price}
-                  originalPrice={item.originalPrice}
-                  format={item.format}
-                />
+                <Link href={`/product/1`} key={index}>
+                  <BookCard
+                    image={item.image}
+                    title={item.title}
+                    author={item.author}
+                    price={item.price}
+                    originalPrice={item.originalPrice}
+                    format={item.format}
+                  />
+                </Link>
               </CarouselItem>
             ))}
           </CarouselContent>

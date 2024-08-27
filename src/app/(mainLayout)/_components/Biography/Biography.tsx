@@ -1,5 +1,6 @@
 "use client";
 import { ChevronRight } from "lucide-react";
+import Link from "next/link";
 import BioCard from "./BiographyCard";
 
 const items = [
@@ -42,15 +43,16 @@ const BioList = () => {
       </div>
       <div className="mt-10 grid lg:grid-cols-3 grid-cols-1">
         {items.map((item, index) => (
-          <BioCard
-            key={index}
-            image={item.image}
-            title={item.title}
-            author={item.author}
-            price={item.price}
-            originalPrice={item.originalPrice}
-            format={item.format}
-          />
+          <Link href={`/product/1`} key={index}>
+            <BioCard
+              image={item.image}
+              title={item.title}
+              author={item.author}
+              price={item.price}
+              originalPrice={item.originalPrice}
+              format={item.format}
+            />
+          </Link>
         ))}
       </div>
     </div>
