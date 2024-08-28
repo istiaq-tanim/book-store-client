@@ -1,91 +1,21 @@
 import BookCard from "@/app/(mainLayout)/_components/BookCard/BookCard";
+import { BookItem } from "@/app/(mainLayout)/_components/BookCardList/BookCardList";
+import Link from "next/link";
 
-const FilterItem = () => {
-  const items = [
+const FilterItem = async () => {
+  const response = await fetch(
+    "https://book-store-server-green.vercel.app/books",
     {
-      image:
-        "https://bookworm.madrasthemes.com/wp-content/uploads/2020/08/22-120x183.jpg",
-      title: "Angry God (All Saints High Book 3)",
-      author: "L.J. Shen",
-      price: "1.30",
-      originalPrice: "1.75",
-      format: "Kindle",
-    },
-    {
-      image:
-        "https://bookworm.madrasthemes.com/wp-content/uploads/2020/08/18-120x183.jpg",
-      title: "The Last Sister (Columbia River Book 1)",
-      author: "Jessica Simpson",
-      price: "14.20",
-      format: "Hardcover",
-    },
-    {
-      image:
-        "https://bookworm.madrasthemes.com/wp-content/uploads/2020/08/22-120x183.jpg",
-      title:
-        "Think Like a Monk: Train Your Mind for Peace and Purpose Everyday",
-      author: "J.D. Robb",
-      price: "14.20",
-      format: "Hardcover",
-    },
-    {
-      image:
-        "https://bookworm.madrasthemes.com/wp-content/uploads/2020/08/18-120x183.jpg",
-      title: "Angry God (All Saints High Book 3)",
-      author: "L.J. Shen",
-      price: "1.30",
-      originalPrice: "1.75",
-      format: "Kindle",
-    },
-    {
-      image:
-        "https://bookworm.madrasthemes.com/wp-content/uploads/2020/08/22-120x183.jpg",
-      title: "Angry God (All Saints High Book 3)",
-      author: "L.J. Shen",
-      price: "1.30",
-      originalPrice: "1.75",
-      format: "Kindle",
-    },
-    {
-      image:
-        "https://bookworm.madrasthemes.com/wp-content/uploads/2020/08/22-120x183.jpg",
-      title: "Angry God (All Saints High Book 3)",
-      author: "L.J. Shen",
-      price: "1.30",
-      originalPrice: "1.75",
-      format: "Kindle",
-    },
-    {
-      image:
-        "https://bookworm.madrasthemes.com/wp-content/uploads/2020/08/22-120x183.jpg",
-      title: "Angry God (All Saints High Book 3)",
-      author: "L.J. Shen",
-      price: "1.30",
-      originalPrice: "1.75",
-      format: "Kindle",
-    },
-    {
-      image:
-        "https://bookworm.madrasthemes.com/wp-content/uploads/2020/08/22-120x183.jpg",
-      title: "Angry God (All Saints High Book 3)",
-      author: "L.J. Shen",
-      price: "1.30",
-      originalPrice: "1.75",
-      format: "Kindle",
-    },
-  ];
+      cache: "no-store",
+    }
+  );
+  const items = await response.json();
   return (
     <div className="col-span-9 grid grid-cols-4">
-      {items.map((item, index) => (
-        <BookCard
-          key={index}
-          image={item.image}
-          title={item.title}
-          author={item.author}
-          price={item.price}
-          originalPrice={item.originalPrice}
-          format={item.format}
-        ></BookCard>
+      {items?.data.map((item: BookItem, index: number) => (
+        <Link href={`/product/${item?._id}`} key={index}>
+          <BookCard item={item} />
+        </Link>
       ))}
     </div>
   );

@@ -133,7 +133,7 @@ const Footer = () => {
 
         <div className="flex flex-wrap justify-between items-center border-t pt-6">
           <p className="text-sm text-gray-600">
-            ©2020 Book Worm. All rights reserved
+            ©2024 Book Store. All rights reserved
           </p>
           <div className="flex items-center space-x-3">
             <Image

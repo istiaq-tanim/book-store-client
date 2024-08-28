@@ -1,5 +1,7 @@
+import { BookItem } from "@/app/(mainLayout)/_components/BookCardList/BookCardList";
 import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
-const ProductTable = () => {
+const ProductTable = ({ book }: { book: BookItem }) => {
+  console.log(book);
   return (
     <div className="container">
       <Table className="max-w-2xl mx-auto">
@@ -16,11 +18,15 @@ const ProductTable = () => {
           </TableRow>
           <TableRow>
             <TableCell className="font-bold">Book Author</TableCell>
-            <TableCell className="text-[#f30b0b]">Douglas Kennedy</TableCell>
+            <TableCell className="text-[#f30b0b]">{book?.author}</TableCell>
           </TableRow>
           <TableRow>
             <TableCell className="font-bold">Book Format</TableCell>
-            <TableCell>Hardcover, Kindle, Paperback</TableCell>
+            <TableCell>
+              {book?.format?.map((item) => (
+                <span key={item}>{item} </span>
+              ))}
+            </TableCell>
           </TableRow>
         </TableBody>
       </Table>

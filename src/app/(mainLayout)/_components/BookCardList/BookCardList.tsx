@@ -1,4 +1,3 @@
-"use client";
 import {
   Carousel,
   CarouselContent,
@@ -9,103 +8,51 @@ import {
 import { ChevronRight } from "lucide-react";
 import Link from "next/link";
 import BookCard from "../BookCard/BookCard";
-const items = [
-  {
-    image:
-      "https://bookworm.madrasthemes.com/wp-content/uploads/2020/08/22-120x183.jpg",
-    title: "Angry God (All Saints High Book 3)",
-    author: "L.J. Shen",
-    price: "1.30",
-    originalPrice: "1.75",
-    format: "Kindle",
-  },
-  {
-    image:
-      "https://bookworm.madrasthemes.com/wp-content/uploads/2020/08/18-120x183.jpg",
-    title: "The Last Sister (Columbia River Book 1)",
-    author: "Jessica Simpson",
-    price: "14.20",
-    format: "Hardcover",
-  },
-  {
-    image:
-      "https://bookworm.madrasthemes.com/wp-content/uploads/2020/08/22-120x183.jpg",
-    title: "Think Like a Monk: Train Your Mind for Peace and Purpose Everyday",
-    author: "J.D. Robb",
-    price: "14.20",
-    format: "Hardcover",
-  },
-  {
-    image:
-      "https://bookworm.madrasthemes.com/wp-content/uploads/2020/08/18-120x183.jpg",
-    title: "Angry God (All Saints High Book 3)",
-    author: "L.J. Shen",
-    price: "1.30",
-    originalPrice: "1.75",
-    format: "Kindle",
-  },
-  {
-    image:
-      "https://bookworm.madrasthemes.com/wp-content/uploads/2020/08/22-120x183.jpg",
-    title: "Angry God (All Saints High Book 3)",
-    author: "L.J. Shen",
-    price: "1.30",
-    originalPrice: "1.75",
-    format: "Kindle",
-  },
-  {
-    image:
-      "https://bookworm.madrasthemes.com/wp-content/uploads/2020/08/22-120x183.jpg",
-    title: "Angry God (All Saints High Book 3)",
-    author: "L.J. Shen",
-    price: "1.30",
-    originalPrice: "1.75",
-    format: "Kindle",
-  },
-  {
-    image:
-      "https://bookworm.madrasthemes.com/wp-content/uploads/2020/08/22-120x183.jpg",
-    title: "Angry God (All Saints High Book 3)",
-    author: "L.J. Shen",
-    price: "1.30",
-    originalPrice: "1.75",
-    format: "Kindle",
-  },
-  {
-    image:
-      "https://bookworm.madrasthemes.com/wp-content/uploads/2020/08/22-120x183.jpg",
-    title: "Angry God (All Saints High Book 3)",
-    author: "L.J. Shen",
-    price: "1.30",
-    originalPrice: "1.75",
-    format: "Kindle",
-  },
-];
 
-const BookCardList = () => {
+interface ReviewItem {
+  date: string;
+  name: string;
+  review: string;
+}
+export interface BookItem {
+  _id: string;
+  image: string;
+  title: string;
+  author: string;
+  price: string;
+  originalPrice?: string;
+  ratings: number;
+  format: string[];
+  description: string;
+  reviews: ReviewItem[];
+}
+
+const BookCardList = async () => {
+  const response = await fetch(
+    "https://book-store-server-green.vercel.app/books",
+    {
+      cache: "no-store",
+    }
+  );
+  const items = await response.json();
   return (
     <div className="container my-20">
       <div className="flex justify-between">
         <p className="text-3xl font-semibold">Bestselling Books</p>
         <div className="flex flex-row">
-          <p className="hover:text-[#f75454]">View All</p>
+          <Link href="/shop" className="hover:text-[#f75454]">
+            View All
+          </Link>
           <ChevronRight strokeWidth={1} />
         </div>
       </div>
       <div className="mt-10">
         <Carousel className="relative">
           <CarouselContent>
-            {items.map((item, index) => (
-              <CarouselItem key={index} className="lg:basis-1/5">
-                <Link href={`/product/1`} key={index}>
-                  <BookCard
-                    image={item.image}
-                    title={item.title}
-                    author={item.author}
-                    price={item.price}
-                    originalPrice={item.originalPrice}
-                    format={item.format}
-                  />
+            {items?.data.map((item: BookItem, index: number) => (
+              <CarouselItem key={index} className="lg:basis-1/5 basis-1/2">
+                <Link href={`/product/${item?._id}`} key={index}>
+                  <BookCard item={item} />
                 </Link>
               </CarouselItem>
             ))}

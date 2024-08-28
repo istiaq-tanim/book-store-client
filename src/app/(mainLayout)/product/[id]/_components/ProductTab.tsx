@@ -1,11 +1,12 @@
 "use client";
+import { BookItem } from "@/app/(mainLayout)/_components/BookCardList/BookCardList";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useState } from "react";
 import Details from "./Details";
 import ProductTable from "./ProductTable";
 import Review from "./Review";
 
-const ProductTab = () => {
+const ProductTab = ({ book }: { book: BookItem }) => {
   const [activeTab, setActiveTab] = useState("description");
   return (
     <Tabs
@@ -49,13 +50,13 @@ const ProductTab = () => {
         value="details"
         className="flex lg:flex-row flex-col justify-center"
       >
-        <ProductTable></ProductTable>
+        <ProductTable book={book}></ProductTable>
       </TabsContent>
       <TabsContent
         value="review"
         className="flex lg:flex-row flex-col justify-center"
       >
-        <Review></Review>
+        <Review book={book}></Review>
       </TabsContent>
     </Tabs>
   );

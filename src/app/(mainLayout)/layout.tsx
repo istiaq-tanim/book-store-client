@@ -7,10 +7,6 @@ const navLinks = [
     href: "/",
   },
   {
-    title: "Category",
-    href: "/category",
-  },
-  {
     title: "Shop",
     href: "/shop",
   },

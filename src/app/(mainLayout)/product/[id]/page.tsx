@@ -1,13 +1,22 @@
 import ProductDetails from "./_components/ProductDetails";
 import ProductTab from "./_components/ProductTab";
 
-const ProductDetailsPage = () => {
+const ProductDetailsPage = async ({ params }: { params: { id: string } }) => {
+  const { id } = params;
+  const response = await fetch(
+    `https://book-store-server-green.vercel.app/books/${id}`,
+    {
+      cache: "no-store",
+    }
+  );
+
+  const result = await response.json();
   return (
     <div className="my-16">
       <div className="bg-[#fff6f6]">
-        <ProductDetails></ProductDetails>
+        <ProductDetails book={result?.data}></ProductDetails>
       </div>
-      <ProductTab></ProductTab>
+      <ProductTab book={result?.data}></ProductTab>
     </div>
   );
 };

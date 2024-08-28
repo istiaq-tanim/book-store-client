@@ -2,11 +2,26 @@
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import BookCard from "../BookCard/BookCard";
 
 const NewRelease = () => {
   const [activeTab, setActiveTab] = useState("history");
+  const [books, setBooks] = useState([]);
+
+  useEffect(() => {
+    const fetchBooks = async () => {
+      const response = await fetch(
+        "https://book-store-server-green.vercel.app/books",
+        {
+          cache: "no-store",
+        }
+      );
+      const items = await response.json();
+      setBooks(items?.data);
+    };
+    fetchBooks();
+  }, []);
   return (
     <div className="container my-20 relative">
       <span className="text-3xl lg:absolute flex justify-center my-5 top-1">
@@ -71,70 +86,9 @@ const NewRelease = () => {
                 </div>
               </div>
               <div className="col-span-8 grid lg:grid-cols-4 grid-cols-2">
-                <BookCard
-                  image="https://bookworm.madrasthemes.com/wp-content/uploads/2020/08/22-120x183.jpg"
-                  title="Angry God (All Saints High Book 3)"
-                  author="L.J. Shen"
-                  price="1.30"
-                  originalPrice="1.75"
-                  format="Kindle"
-                />
-                <BookCard
-                  image="https://bookworm.madrasthemes.com/wp-content/uploads/2020/08/3-120x183.jpg"
-                  title="Angry God (All Saints High Book 3)"
-                  author="L.J. Shen"
-                  price="1.30"
-                  originalPrice="1.75"
-                  format="Kindle"
-                />
-                <BookCard
-                  image="https://bookworm.madrasthemes.com/wp-content/uploads/2020/08/47-120x183.jpg"
-                  title="Angry God (All Saints High Book 3)"
-                  author="L.J. Shen"
-                  price="1.30"
-                  originalPrice="1.75"
-                  format="Kindle"
-                />
-                <BookCard
-                  image="https://bookworm.madrasthemes.com/wp-content/uploads/2020/08/14-120x183.jpg"
-                  title="Angry God (All Saints High Book 3)"
-                  author="L.J. Shen"
-                  price="1.30"
-                  originalPrice="1.75"
-                  format="Kindle"
-                />
-                <BookCard
-                  image="https://bookworm.madrasthemes.com/wp-content/uploads/2020/08/44-120x183.jpg"
-                  title="Angry God (All Saints High Book 3)"
-                  author="L.J. Shen"
-                  price="1.30"
-                  originalPrice="1.75"
-                  format="Kindle"
-                />
-                <BookCard
-                  image="https://bookworm.madrasthemes.com/wp-content/uploads/2020/08/22-120x183.jpg"
-                  title="Angry God (All Saints High Book 3)"
-                  author="L.J. Shen"
-                  price="1.30"
-                  originalPrice="1.75"
-                  format="Kindle"
-                />
-                <BookCard
-                  image="https://bookworm.madrasthemes.com/wp-content/uploads/2020/08/3-120x183.jpg"
-                  title="Angry God (All Saints High Book 3)"
-                  author="L.J. Shen"
-                  price="1.30"
-                  originalPrice="1.75"
-                  format="Kindle"
-                />
-                <BookCard
-                  image="https://bookworm.madrasthemes.com/wp-content/uploads/2020/08/22-120x183.jpg"
-                  title="Angry God (All Saints High Book 3)"
-                  author="L.J. Shen"
-                  price="1.30"
-                  originalPrice="1.75"
-                  format="Kindle"
-                />
+                {books.map((item, index) => (
+                  <BookCard key={index} item={item} />
+                ))}
               </div>
             </div>
           </TabsContent>
@@ -165,70 +119,9 @@ const NewRelease = () => {
                 </div>
               </div>
               <div className="col-span-8 grid grid-cols-4">
-                <BookCard
-                  image="https://bookworm.madrasthemes.com/wp-content/uploads/2020/08/22-120x183.jpg"
-                  title="Angry God (All Saints High Book 3)"
-                  author="L.J. Shen"
-                  price="1.30"
-                  originalPrice="1.75"
-                  format="Kindle"
-                />
-                <BookCard
-                  image="https://bookworm.madrasthemes.com/wp-content/uploads/2020/08/3-120x183.jpg"
-                  title="Angry God (All Saints High Book 3)"
-                  author="L.J. Shen"
-                  price="1.30"
-                  originalPrice="1.75"
-                  format="Kindle"
-                />
-                <BookCard
-                  image="https://bookworm.madrasthemes.com/wp-content/uploads/2020/08/14-120x183.jpg"
-                  title="Angry God (All Saints High Book 3)"
-                  author="L.J. Shen"
-                  price="1.30"
-                  originalPrice="1.75"
-                  format="Kindle"
-                />
-                <BookCard
-                  image="https://bookworm.madrasthemes.com/wp-content/uploads/2020/08/22-120x183.jpg"
-                  title="Angry God (All Saints High Book 3)"
-                  author="L.J. Shen"
-                  price="1.30"
-                  originalPrice="1.75"
-                  format="Kindle"
-                />
-                <BookCard
-                  image="https://bookworm.madrasthemes.com/wp-content/uploads/2020/08/img4-4-120x183.jpg"
-                  title="Angry God (All Saints High Book 3)"
-                  author="L.J. Shen"
-                  price="1.30"
-                  originalPrice="1.75"
-                  format="Kindle"
-                />
-                <BookCard
-                  image="https://bookworm.madrasthemes.com/wp-content/uploads/2020/08/22-120x183.jpg"
-                  title="Angry God (All Saints High Book 3)"
-                  author="L.J. Shen"
-                  price="1.30"
-                  originalPrice="1.75"
-                  format="Kindle"
-                />
-                <BookCard
-                  image="https://bookworm.madrasthemes.com/wp-content/uploads/2020/08/22-120x183.jpg"
-                  title="Angry God (All Saints High Book 3)"
-                  author="L.J. Shen"
-                  price="1.30"
-                  originalPrice="1.75"
-                  format="Kindle"
-                />
-                <BookCard
-                  image="https://bookworm.madrasthemes.com/wp-content/uploads/2020/08/22-120x183.jpg"
-                  title="Angry God (All Saints High Book 3)"
-                  author="L.J. Shen"
-                  price="1.30"
-                  originalPrice="1.75"
-                  format="Kindle"
-                />
+                {books.map((item, index) => (
+                  <BookCard key={index} item={item} />
+                ))}
               </div>
             </div>
           </TabsContent>
@@ -259,70 +152,9 @@ const NewRelease = () => {
                 </div>
               </div>
               <div className="col-span-8 grid grid-cols-4">
-                <BookCard
-                  image="https://bookworm.madrasthemes.com/wp-content/uploads/2020/08/22-120x183.jpg"
-                  title="Angry God (All Saints High Book 3)"
-                  author="L.J. Shen"
-                  price="1.30"
-                  originalPrice="1.75"
-                  format="Kindle"
-                />
-                <BookCard
-                  image="https://bookworm.madrasthemes.com/wp-content/uploads/2020/08/22-120x183.jpg"
-                  title="Angry God (All Saints High Book 3)"
-                  author="L.J. Shen"
-                  price="1.30"
-                  originalPrice="1.75"
-                  format="Kindle"
-                />
-                <BookCard
-                  image="https://bookworm.madrasthemes.com/wp-content/uploads/2020/08/22-120x183.jpg"
-                  title="Angry God (All Saints High Book 3)"
-                  author="L.J. Shen"
-                  price="1.30"
-                  originalPrice="1.75"
-                  format="Kindle"
-                />
-                <BookCard
-                  image="https://bookworm.madrasthemes.com/wp-content/uploads/2020/08/14-120x183.jpg"
-                  title="Angry God (All Saints High Book 3)"
-                  author="L.J. Shen"
-                  price="1.30"
-                  originalPrice="1.75"
-                  format="Kindle"
-                />
-                <BookCard
-                  image="https://bookworm.madrasthemes.com/wp-content/uploads/2020/08/22-120x183.jpg"
-                  title="Angry God (All Saints High Book 3)"
-                  author="L.J. Shen"
-                  price="1.30"
-                  originalPrice="1.75"
-                  format="Kindle"
-                />
-                <BookCard
-                  image="https://bookworm.madrasthemes.com/wp-content/uploads/2020/08/img4-4-120x183.jpg"
-                  title="Angry God (All Saints High Book 3)"
-                  author="L.J. Shen"
-                  price="1.30"
-                  originalPrice="1.75"
-                  format="Kindle"
-                />
-                <BookCard
-                  image="https://bookworm.madrasthemes.com/wp-content/uploads/2020/08/22-120x183.jpg"
-                  title="Angry God (All Saints High Book 3)"
-                  author="L.J. Shen"
-                  price="1.30"
-                  originalPrice="1.75"
-                  format="Kindle"
-                />
-                <BookCard
-                  image="https://bookworm.madrasthemes.com/wp-content/uploads/2020/08/22-120x183.jpg"
-                  title="Angry God (All Saints High Book 3)"
-                  author="L.J. Shen"
-                  price="1.30"
-                  originalPrice="1.75"
-                  format="Kindle"
-                />
+                {books.map((item, index) => (
+                  <BookCard key={index} item={item} />
+                ))}
               </div>
             </div>
           </TabsContent>

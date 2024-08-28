@@ -5,6 +5,7 @@ import {
   CarouselItem,
 } from "@/components/ui/carousel";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import Link from "next/link";
 import { useState } from "react";
 import DealCard from "./DealCard";
 
@@ -97,7 +98,9 @@ const DealList = () => {
       <div className="flex justify-between">
         <p className="text-3xl font-semibold">Deals of the Week</p>
         <div className="flex flex-row">
-          <p className="hover:text-[#f75454]">View All</p>
+          <Link href="/shop" className="hover:text-[#f75454]">
+            View All
+          </Link>
           <ChevronRight strokeWidth={1} />
         </div>
       </div>
