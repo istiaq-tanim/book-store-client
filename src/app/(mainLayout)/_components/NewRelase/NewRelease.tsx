@@ -12,10 +12,7 @@ const NewRelease = () => {
   useEffect(() => {
     const fetchBooks = async () => {
       const response = await fetch(
-        "https://book-store-server-green.vercel.app/books",
-        {
-          cache: "no-store",
-        }
+        "https://book-store-server-green.vercel.app/books"
       );
       const items = await response.json();
       setBooks(items?.data);
