@@ -19,7 +19,7 @@ export interface BookItem {
   image: string;
   title: string;
   author: string;
-  price: string;
+  price: number;
   originalPrice?: string;
   ratings: number;
   format: string[];
