@@ -4,7 +4,7 @@ const nextConfig = {
             remotePatterns: [
                   {
                         protocol: 'https',
-                        hostname: 'bookworm.madrasthemes.com'
+                        hostname: "**"
                   },
             ],
       },

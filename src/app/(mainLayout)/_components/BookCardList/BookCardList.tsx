@@ -9,7 +9,7 @@ import { ChevronRight } from "lucide-react";
 import Link from "next/link";
 import BookCard from "../BookCard/BookCard";
 
-interface ReviewItem {
+export interface ReviewItem {
   date: string;
   name: string;
   review: string;
@@ -25,15 +25,16 @@ export interface BookItem {
   format: string[];
   description: string;
   reviews: ReviewItem[];
+  category: string;
+  onSale: boolean;
+  saleNumber: number;
+  featured: true;
 }
 
 const BookCardList = async () => {
-  const response = await fetch(
-    "https://book-store-server-green.vercel.app/books",
-    {
-      cache: "no-store",
-    }
-  );
+  const response = await fetch("http://localhost:5000/books", {
+    cache: "no-store",
+  });
   const items = await response.json();
   return (
     <div className="container my-20">
