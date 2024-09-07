@@ -27,7 +27,7 @@ const ShopPage = async ({ searchParams }: { searchParams: TSearchParams }) => {
     refinePrice = "";
     refineCategory = "";
 
-    url = "http://localhost:5000/books";
+    url = "https://book-store-server-green.vercel.app//books";
   } else if (
     decodedRating !== "undefined" &&
     decodedPrice !== "undefined" &&
@@ -37,28 +37,28 @@ const ShopPage = async ({ searchParams }: { searchParams: TSearchParams }) => {
     refineRating = decodedRating;
     refineCategory = decodeCategory;
 
-    url = `http://localhost:5000/books?ratings=${refineRating}&price=${refinePrice}&category=${refineCategory}`;
+    url = `https://book-store-server-green.vercel.app//books?ratings=${refineRating}&price=${refinePrice}&category=${refineCategory}`;
   } else if (decodedPrice !== "undefined" && decodedRating !== "undefined") {
     refinePrice = decodedPrice;
     refineRating = decodedRating;
-    url = `http://localhost:5000/books?price=${refinePrice}&ratings=${refineRating}`;
+    url = `https://book-store-server-green.vercel.app//books?price=${refinePrice}&ratings=${refineRating}`;
   } else if (decodedPrice !== "undefined" && decodeCategory !== "undefined") {
     refinePrice = decodedPrice;
     refineCategory = decodeCategory;
-    url = `http://localhost:5000/books?price=${refinePrice}&category=${refineCategory}`;
+    url = `https://book-store-server-green.vercel.app//books?price=${refinePrice}&category=${refineCategory}`;
   } else if (decodedRating !== "undefined" && decodeCategory !== "undefined") {
     refineRating = decodedRating;
     refineCategory = decodeCategory;
-    url = `http://localhost:5000/books?ratings=${refineRating}&category=${refineCategory}`;
+    url = `https://book-store-server-green.vercel.app//books?ratings=${refineRating}&category=${refineCategory}`;
   } else if (decodedPrice !== "undefined") {
     refinePrice = decodedPrice;
-    url = `http://localhost:5000/books?price=${refinePrice}`;
+    url = `https://book-store-server-green.vercel.app//books?price=${refinePrice}`;
   } else if (decodedRating !== "undefined") {
     refineRating = decodedRating;
-    url = `http://localhost:5000/books?ratings=${refineRating}`;
+    url = `https://book-store-server-green.vercel.app//books?ratings=${refineRating}`;
   } else if (decodeCategory !== "undefined") {
     refineCategory = decodeCategory;
-    url = `http://localhost:5000/books?category=${refineCategory}`;
+    url = `https://book-store-server-green.vercel.app//books?category=${refineCategory}`;
   }
 
   const response = await fetch(url as string, {
