@@ -6,15 +6,11 @@ import { useState } from "react";
 
 import { CartSide } from "@/app/(mainLayout)/_components/Cart/Cart";
 import CartList from "@/app/(mainLayout)/_components/CartList/CartList";
+import { logOut } from "@/app/(withoutMainLayout)/action/authAction";
 import { Menu, X } from "lucide-react";
+import { useRouter } from "next/navigation";
 import { MobileNav } from "./MobileNav";
-import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "./ui/dropdown-menu";
+import { Button, buttonVariants } from "./ui/button";
 
 export type TNavLink = {
   title: string;
@@ -23,12 +19,19 @@ export type TNavLink = {
 
 export function MainNav({
   items,
+  user,
   children,
 }: {
   items: TNavLink[];
+  user: string;
   children?: React.ReactNode;
 }) {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
+  const router = useRouter();
+  const handleLogout = async () => {
+    await logOut();
+    router.refresh();
+  };
 
   return (
     <>
@@ -63,30 +66,22 @@ export function MainNav({
             <CartList></CartList>
           </CartSide>
         </div>
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <div className="cursor-pointer">
-              <Avatar>
-                <AvatarImage
-                  src="https://github.com/shadcn.png"
-                  alt="@shadcn"
-                />
-                <AvatarFallback>CN</AvatarFallback>
-              </Avatar>
-            </div>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end" className="w-56 mt-4">
-            <DropdownMenuItem className="cursor-pointer" asChild>
-              <Link href="account/enrolled-courses">LogIn</Link>
-            </DropdownMenuItem>
-            <DropdownMenuItem className="cursor-pointer" asChild>
-              <Link href="">Logout</Link>
-            </DropdownMenuItem>
-            <DropdownMenuItem className="cursor-pointer" asChild>
-              <Link href="account">Register</Link>
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
+        {user ? (
+          <Button
+            onClick={handleLogout}
+            className={cn(buttonVariants({ size: "sm" }), "px-4")}
+          >
+            Logout
+          </Button>
+        ) : (
+          <Link
+            href="/login"
+            className={cn(buttonVariants({ size: "sm" }), "px-4")}
+          >
+            Login
+          </Link>
+        )}
+
         <button
           className="flex items-center space-x-2 lg:hidden"
           onClick={() => setShowMobileMenu(!showMobileMenu)}

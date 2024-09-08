@@ -2,6 +2,7 @@ import { BookItem } from "@/app/(mainLayout)/_components/BookCardList/BookCardLi
 import Rating from "@/components/Rating";
 import { Heart, Share2 } from "lucide-react";
 import Image from "next/image";
+import AddToCart from "./AddToCart";
 
 const ProductDetails = ({ book }: { book: BookItem }) => {
   return (
@@ -46,83 +47,7 @@ const ProductDetails = ({ book }: { book: BookItem }) => {
         </div>
 
         <div className="flex lg:flex-row flex-col items-center lg:gap-5 gap-2">
-          <div className="flex sm:items-center">
-            <button className="group p-4 border border-gray-400 bg-white transition-all duration-300 hover:bg-gray-50 hover:shadow-sm hover:shadow-gray-300">
-              <svg
-                className="stroke-gray-900 group-hover:stroke-black"
-                width="22"
-                height="22"
-                viewBox="0 0 22 22"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M16.5 11H5.5"
-                  stroke=""
-                  stroke-width="1.6"
-                  stroke-linecap="round"
-                />
-                <path
-                  d="M16.5 11H5.5"
-                  stroke=""
-                  stroke-opacity="0.2"
-                  stroke-width="1.6"
-                  stroke-linecap="round"
-                />
-                <path
-                  d="M16.5 11H5.5"
-                  stroke=""
-                  stroke-opacity="0.2"
-                  stroke-width="1.6"
-                  stroke-linecap="round"
-                />
-              </svg>
-            </button>
-            <input
-              type="text"
-              className="font-semibold text-gray-900 cursor-pointer text-lg py-[13px] px-3 w-full sm:max-w-[80px] outline-0 border-y border-gray-400 bg-transparent placeholder:text-gray-900 text-center hover:bg-gray-50"
-              placeholder="1"
-            />
-            <button className="group py-4 px-6 border border-gray-400 bg-white transition-all duration-300 hover:bg-gray-50 hover:shadow-sm hover:shadow-gray-300">
-              <svg
-                className="stroke-gray-900 group-hover:stroke-black"
-                width="22"
-                height="22"
-                viewBox="0 0 22 22"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M11 5.5V16.5M16.5 11H5.5"
-                  stroke="#9CA3AF"
-                  stroke-width="1.6"
-                  stroke-linecap="round"
-                />
-                <path
-                  d="M11 5.5V16.5M16.5 11H5.5"
-                  stroke="black"
-                  stroke-opacity="0.2"
-                  stroke-width="1.6"
-                  stroke-linecap="round"
-                />
-                <path
-                  d="M11 5.5V16.5M16.5 11H5.5"
-                  stroke="black"
-                  stroke-opacity="0.2"
-                  stroke-width="1.6"
-                  stroke-linecap="round"
-                />
-              </svg>
-            </button>
-          </div>
-          <div className="mt-6 flex gap-3 border-b border-gray-200 pb-5">
-            <a
-              href="#"
-              className="bg-primary border border-primary text-white px-8 py-4 font-medium rounded uppercase flex items-center gap-2 hover:bg-transparent hover:text-primary transition"
-            >
-              <i className="fa-solid fa-bag-shopping"></i> Add to cart
-            </a>
-          </div>
+          <AddToCart product={book}></AddToCart>
           <div className="flex gap-1">
             <Heart strokeWidth={0.5}></Heart>
             <span>Add to wishlist</span>

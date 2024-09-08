@@ -14,10 +14,15 @@ export const SidebarItem = ({ icon: Icon, label, href }: SidebarItemProps) => {
   const pathname = usePathname();
   const router = useRouter();
 
-  const isActive = pathname === href;
+  const linkPath = `/dashboard/${href}`;
+  console.log(linkPath);
+  console.log(pathname);
+
+  const isActive = pathname === linkPath;
+  console.log(isActive);
 
   const onClick = () => {
-    router.push(href);
+    router.push(linkPath);
   };
 
   return (

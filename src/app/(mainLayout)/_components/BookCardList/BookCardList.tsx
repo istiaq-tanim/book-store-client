@@ -33,7 +33,7 @@ export interface BookItem {
 
 const BookCardList = async () => {
   const response = await fetch(
-    "https://book-store-server-green.vercel.app//books",
+    "https://book-store-server-green.vercel.app/books",
     {
       cache: "no-store",
     }
