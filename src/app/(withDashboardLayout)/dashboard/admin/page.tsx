@@ -1,9 +1,5 @@
-const AdminPage = () => {
-  return (
-    <div>
-      <h3>Admin is Here</h3>
-    </div>
-  );
+const AllBookPage = () => {
+  return <>Welcome to Admin Dashboard</>;
 };
 
-export default AdminPage;
+export default AllBookPage;

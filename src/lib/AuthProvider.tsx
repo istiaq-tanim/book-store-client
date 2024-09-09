@@ -1,7 +1,8 @@
 "use client";
 
+import { userInfo } from "@/app/(withoutMainLayout)/action/authAction";
 import { createContext, useContext, useEffect, useState } from "react";
-import { userInfo } from "../(withoutMainLayout)/action/authAction";
+
 type TUser = {
   email: string;
   role: string;

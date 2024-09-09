@@ -7,7 +7,7 @@ import { SidebarItem } from "./SidebarItem";
 export const SidebarRoutes = ({ user }: { user: string }) => {
   return (
     <div className="flex flex-col w-full">
-      {sideBarMenu(user.toLowerCase() as UserRole).map((route) => (
+      {sideBarMenu(user?.toLowerCase() as UserRole).map((route) => (
         <SidebarItem
           key={route.href}
           icon={route.icon}

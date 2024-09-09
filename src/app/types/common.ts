@@ -8,3 +8,18 @@ export type MenuItem = {
       label: string;
       href: string;
 }
+
+export type BookInputs = {
+      title: string;
+      author: string;
+      originalPrice: number;
+      rating: number;
+      image: string;
+      category: string;
+      format: string;
+      description: string;
+      onSale: boolean;
+      featured: boolean;
+      price?: number
+      saleNumber: number
+}

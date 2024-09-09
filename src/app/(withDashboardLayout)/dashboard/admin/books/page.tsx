@@ -1,7 +1,9 @@
+import AllBooks from "@/app/(withDashboardLayout)/_components/AllBooks";
+
 const BooksPage = () => {
   return (
     <div>
-      <h3>All book is Here</h3>
+      <AllBooks></AllBooks>
     </div>
   );
 };
