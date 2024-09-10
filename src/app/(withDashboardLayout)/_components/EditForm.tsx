@@ -18,9 +18,7 @@ const EditForm = ({
 
   useEffect(() => {
     const fetchBook = async () => {
-      const response = await fetch(
-        `https://book-store-server-green.vercel.app/books/${id}`
-      );
+      const response = await fetch(`http://localhost:5000/books/${id}`);
       const data = await response.json();
       setBook(data?.data);
 

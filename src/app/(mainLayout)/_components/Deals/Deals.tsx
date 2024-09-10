@@ -3,18 +3,18 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
 } from "@/components/ui/carousel";
-import { ChevronLeft, ChevronRight } from "lucide-react";
-import Link from "next/link";
-import { useState } from "react";
+import { ChevronRight } from "lucide-react";
 import DealCard from "./DealCard";
 
 const items = [
   {
     image:
-      "https://bookworm.madrasthemes.com/wp-content/uploads/2020/08/22-120x183.jpg",
-    title: "Angry God (All Saints High Book 3)",
-    author: "L.J. Shen",
+      "https://bookworm.madrasthemes.com/wp-content/uploads/2020/08/1-200x327.jpg",
+    title: "Versus",
+    author: "Barbara O'Neal",
     price: "1.30",
     originalPrice: "1.75",
     format: "Kindle",
@@ -30,111 +30,86 @@ const items = [
   {
     image:
       "https://bookworm.madrasthemes.com/wp-content/uploads/2020/08/22-120x183.jpg",
-    title: "Think Like a Monk: Train Your Mind for Peace and Purpose Everyday",
+    title: "Think Like a Monk",
     author: "J.D. Robb",
     price: "14.20",
     format: "Hardcover",
   },
   {
     image:
-      "https://bookworm.madrasthemes.com/wp-content/uploads/2020/08/18-120x183.jpg",
-    title: "Angry God (All Saints High Book 3)",
-    author: "L.J. Shen",
+      "https://bookworm.madrasthemes.com/wp-content/uploads/2020/08/10-300x449.jpg",
+    title: "Blindside",
+    author: "Michael Bennett",
     price: "1.30",
-    originalPrice: "1.75",
+    originalPrice: "6.5",
+    format: "Kindle",
+  },
+  {
+    image: "https://bookworm.madrasthemes.com/wp-content/uploads/2020/08/9.jpg",
+    title: "Until the End of Time",
+    author: "James Patterson",
+    price: "1.30",
+    originalPrice: "8",
     format: "Kindle",
   },
   {
     image:
-      "https://bookworm.madrasthemes.com/wp-content/uploads/2020/08/22-120x183.jpg",
-    title: "Angry God (All Saints High Book 3)",
-    author: "L.J. Shen",
+      "https://bookworm.madrasthemes.com/wp-content/uploads/2020/08/8-300x449.jpg",
+    title: "Open Book: A Memoir",
+    author: "Jessica Simpson",
     price: "1.30",
-    originalPrice: "1.75",
+    originalPrice: "3.5",
     format: "Kindle",
   },
   {
     image:
-      "https://bookworm.madrasthemes.com/wp-content/uploads/2020/08/22-120x183.jpg",
-    title: "Angry God (All Saints High Book 3)",
+      "https://bookworm.madrasthemes.com/wp-content/uploads/2020/08/50-300x444.jpg",
+    title: "Where the Crawdads Sing",
     author: "L.J. Shen",
     price: "1.30",
-    originalPrice: "1.75",
+    originalPrice: "7.75",
     format: "Kindle",
   },
   {
     image:
-      "https://bookworm.madrasthemes.com/wp-content/uploads/2020/08/22-120x183.jpg",
-    title: "Angry God (All Saints High Book 3)",
-    author: "L.J. Shen",
+      "https://bookworm.madrasthemes.com/wp-content/uploads/2020/08/26-300x449.jpg",
+    title: "The Overdue Life of Amy Byler",
+    author: "Kelly Harms",
     price: "1.30",
-    originalPrice: "1.75",
-    format: "Kindle",
-  },
-  {
-    image:
-      "https://bookworm.madrasthemes.com/wp-content/uploads/2020/08/22-120x183.jpg",
-    title: "Angry God (All Saints High Book 3)",
-    author: "L.J. Shen",
-    price: "1.30",
-    originalPrice: "1.75",
+    originalPrice: "5.5",
     format: "Kindle",
   },
 ];
 
 const DealList = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const handlePrev = () => {
-    setCurrentIndex((prevIndex) => (prevIndex === 0 ? 0 : prevIndex - 1));
-  };
-
-  const handleNext = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === items.length - 1 ? 0 : prevIndex + 1
-    );
-  };
   return (
     <div className="container my-20">
       <div className="flex justify-between">
-        <p className="text-3xl font-semibold">Deals of the Week</p>
+        <p className="text-3xl font-semibold">Deals of the week</p>
         <div className="flex flex-row">
-          <Link href="/shop" className="hover:text-[#f75454]">
-            View All
-          </Link>
+          <p className="hover:text-[#f75454]">View All</p>
           <ChevronRight strokeWidth={1} />
         </div>
       </div>
       <div className="mt-10">
-        <Carousel className="relative">
-          <button
-            onClick={handlePrev}
-            className="absolute z-10 -left-[90px] top-1/2 transform -translate-y-1/2 bg-[#fff] p-2 text-[#858380] border border-[#b6b5b2]"
-          >
-            <ChevronLeft />
-          </button>
-          <CarouselContent
-            className="flex transition-transform duration-500 ease-in-out"
-            style={{ transform: `translateX(-${currentIndex * 100}%)` }}
-          >
-            {items.map((item, index) => (
-              <CarouselItem key={index} className="lg:basis-1/2 ">
+        <Carousel className="w-full">
+          <CarouselContent className="-ml-1">
+            {items?.slice(0, 8).map((item, index: number) => (
+              <CarouselItem key={index} className="basis-1/2">
                 <DealCard
-                  image={item.image}
-                  title={item.title}
-                  author={item.author}
-                  price={item.price}
+                  image={item?.image}
+                  title={item?.title}
+                  author={item?.author}
+                  price={item?.author}
                   originalPrice={item.originalPrice}
-                  format={item.format}
-                />
+                  format={item?.format}
+                  key={index}
+                ></DealCard>
               </CarouselItem>
             ))}
           </CarouselContent>
-          <button
-            onClick={handleNext}
-            className="absolute -right-[90px] top-1/2 transform -translate-y-1/2 bg-[#fff] p-2 text-[#858380] border border-[#b6b5b2]"
-          >
-            <ChevronRight />
-          </button>
+          <CarouselPrevious />
+          <CarouselNext />
         </Carousel>
       </div>
     </div>

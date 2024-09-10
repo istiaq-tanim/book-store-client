@@ -24,7 +24,10 @@ const CartItem = ({ item }: { item: ICartItem }) => {
             {item?.title}
           </h3>
           <h6 className="text-sm text-gray-800 font-bold cursor-pointer mt-0.5">
-            ${Number(item?.price ?? 0) * Number(item?.quantity ?? 0)}
+            $
+            {item?.price
+              ? Number(item?.price ?? 0) * Number(item?.quantity ?? 0)
+              : Number(item?.originalPrice ?? 0) * Number(item?.quantity ?? 0)}
           </h6>
 
           <div className="flex gap-4 mt-4">

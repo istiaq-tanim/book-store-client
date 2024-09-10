@@ -32,12 +32,9 @@ export interface BookItem {
 }
 
 const BookCardList = async () => {
-  const response = await fetch(
-    "https://book-store-server-green.vercel.app/books",
-    {
-      cache: "no-store",
-    }
-  );
+  const response = await fetch("http://localhost:5000/books", {
+    cache: "no-store",
+  });
   const items = await response.json();
   return (
     <div className="container my-20">
@@ -53,7 +50,7 @@ const BookCardList = async () => {
       <div className="mt-10">
         <Carousel className="relative">
           <CarouselContent>
-            {items?.data.map((item: BookItem, index: number) => (
+            {items?.data.slice(0, 8).map((item: BookItem, index: number) => (
               <CarouselItem key={index} className="lg:basis-1/5 basis-1/2">
                 <Link href={`/product/${item?._id}`} key={index}>
                   <BookCard item={item} />

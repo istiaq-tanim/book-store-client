@@ -4,7 +4,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 const commonPrivateRoutes = ['/dashboard'];
 const roleBasedPrivateRoutes = {
-      USER: [/^\/dashboard\/user/],
+      USER: [/^\/dashboard\/user/, "/checkOut"],
       ADMIN: [/^\/dashboard\/admin/],
 };
 
@@ -37,5 +37,5 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-      matcher: ["/dashboard/:page*"],
+      matcher: ["/checkOut", "/dashboard/:page*"],
 };

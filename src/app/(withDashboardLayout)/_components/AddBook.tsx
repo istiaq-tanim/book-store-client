@@ -131,7 +131,7 @@ const AddProduct = () => {
             <option disabled selected>
               Please select a category
             </option>
-            <option value="Fiction">Fiction</option>
+            <option value="fiction">Fiction</option>
             <option value="science">Science</option>
             <option value="drama">Drama</option>
             <option value="horror">Horror</option>

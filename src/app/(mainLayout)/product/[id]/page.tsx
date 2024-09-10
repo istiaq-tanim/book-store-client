@@ -3,12 +3,9 @@ import ProductTab from "./_components/ProductTab";
 
 const ProductDetailsPage = async ({ params }: { params: { id: string } }) => {
   const { id } = params;
-  const response = await fetch(
-    `https://book-store-server-green.vercel.app/books/${id}`,
-    {
-      cache: "no-store",
-    }
-  );
+  const response = await fetch(`http://localhost:5000/books/${id}`, {
+    cache: "no-store",
+  });
 
   const result = await response.json();
   return (

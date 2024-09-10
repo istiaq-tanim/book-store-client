@@ -18,7 +18,7 @@ const BookCard = ({ item }: { item: BookItem }) => {
         <div className="p-3">
           <Rating value={item?.ratings}></Rating>
           <span className="block text-sm text-red-600 font-semibold uppercase pt-2">
-            {item?.format}
+            {item?.format[0]}
           </span>
           <h3 className="text-lg  text-gray-800 mt-1 text-justify">
             {item?.title}
@@ -26,11 +26,19 @@ const BookCard = ({ item }: { item: BookItem }) => {
           <p className="text-gray-600 text-sm mt-1">{item?.author}</p>
           <div className="flex items-center justify-between mt-3">
             <div>
-              <span className="text-xl font-bold text-gray-900">
-                ${item?.price}
-              </span>
+              {item?.price && (
+                <span className="text-xl font-bold text-gray-900">
+                  ${item?.price}
+                </span>
+              )}
               {item?.originalPrice && (
-                <span className="text-sm text-gray-500 line-through ml-2">
+                <span
+                  className={`${
+                    item?.price && item?.originalPrice
+                      ? "line-through text-gray-500 text-sm"
+                      : "text-xl font-bold text-gray-900"
+                  } ml-2`}
+                >
                   ${item?.originalPrice}
                 </span>
               )}

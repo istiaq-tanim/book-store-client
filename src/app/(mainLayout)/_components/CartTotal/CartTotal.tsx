@@ -2,6 +2,7 @@
 
 import { getTotal } from "@/app/redux/features/cart/cartSlice";
 import { RootState } from "@/app/redux/store";
+import Link from "next/link";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -27,12 +28,14 @@ const CartTotal = () => {
       </ul>
 
       <div className="mt-8 space-y-2">
-        <button
-          type="button"
-          className="text-sm px-4 py-2.5 w-full font-semibold tracking-wide bg-blue-600 hover:bg-blue-700 text-white rounded-md"
-        >
-          Checkout
-        </button>
+        <Link href="checkOut">
+          <button
+            type="button"
+            className="text-sm px-4 py-2.5 w-full font-semibold tracking-wide bg-blue-600 hover:bg-blue-700 text-white rounded-md"
+          >
+            Proceed To Checkout
+          </button>
+        </Link>
       </div>
     </div>
   );

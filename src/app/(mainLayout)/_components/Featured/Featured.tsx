@@ -12,13 +12,13 @@ const Featured = () => {
   useEffect(() => {
     const fetchBooks = async () => {
       const response = await fetch(
-        "https://book-store-server-green.vercel.app/books"
+        `http://localhost:5000/featuredBook?query=${activeTab}`
       );
       const items = await response.json();
       setBooks(items?.data);
     };
     fetchBooks();
-  }, [books]);
+  }, [activeTab]);
 
   return (
     <div className="container">
@@ -40,20 +40,12 @@ const Featured = () => {
             Featured
           </TabsTrigger>
           <TabsTrigger
-            value="sale"
+            value="onSale"
             className={`relative rounded-none px-4 py-2 focus:outline-none ${
-              activeTab === "sale" ? "border-b-2 border-black pb-2" : ""
+              activeTab === "onSale" ? "border-b-2 border-black pb-2" : ""
             }`}
           >
             On Sale
-          </TabsTrigger>
-          <TabsTrigger
-            value="viewed"
-            className={`relative rounded-none px-4 py-2 focus:outline-none ${
-              activeTab === "viewed" ? "border-b-2 border-black pb-3" : ""
-            }`}
-          >
-            Most Viewed
           </TabsTrigger>
         </TabsList>
         <TabsContent
@@ -67,15 +59,7 @@ const Featured = () => {
           ))}
         </TabsContent>
         <TabsContent
-          value="sale"
-          className="flex lg:flex-row flex-col justify-center items-center "
-        >
-          {books.slice(0, 6).map((item, index) => (
-            <BookCard key={index} item={item} />
-          ))}
-        </TabsContent>
-        <TabsContent
-          value="viewed"
+          value="onSale"
           className="flex lg:flex-row flex-col justify-center items-center "
         >
           {books.slice(0, 6).map((item, index) => (

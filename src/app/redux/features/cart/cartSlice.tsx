@@ -8,8 +8,8 @@ export interface ICartItem {
   image: string;
   title: string;
   author: string;
-  price: number;
-  originalPrice?: string;
+  price?: number;
+  originalPrice: number;
   ratings: number;
   format: string[];
   description: string;
@@ -85,12 +85,10 @@ export const cartSlice = createSlice({
     getTotal: (state) => {
       const { total, quantity } = state.items.reduce(
         (cartTotal: { total: number; quantity: number }, cartItem) => {
-          const { price, quantity = 0 } = cartItem;
-          const totalPrice = price * quantity;
-
+          const { price, originalPrice, quantity = 0 } = cartItem;
+          const totalPrice = (price ?? originalPrice) * quantity;
           cartTotal.total += totalPrice;
           cartTotal.quantity += quantity;
-
           return cartTotal;
         },
         {

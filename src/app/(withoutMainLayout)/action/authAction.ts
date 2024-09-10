@@ -6,7 +6,7 @@ import { cookies } from "next/headers";
 export const signUpUser = async (pre: FormData, formData: FormData) => {
       try {
             const formattedData = JSON.stringify(Object.fromEntries(formData))
-            const res = await fetch("https://book-store-server-green.vercel.app/register", {
+            const res = await fetch("http://localhost:5000/register", {
                   method: "POST",
                   headers: {
                         "Content-type": "application/json"
@@ -23,7 +23,7 @@ export const signUpUser = async (pre: FormData, formData: FormData) => {
 export const logInUser = async (pre: FormData, formData: FormData) => {
       try {
             const formattedData = JSON.stringify(Object.fromEntries(formData))
-            const res = await fetch("https://book-store-server-green.vercel.app/login", {
+            const res = await fetch("http://localhost:5000/login", {
                   method: "POST",
                   headers: {
                         "Content-type": "application/json"
