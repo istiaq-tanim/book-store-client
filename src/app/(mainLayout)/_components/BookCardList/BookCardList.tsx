@@ -30,7 +30,8 @@ export interface BookItem {
   saleNumber: number;
   featured: true;
 }
-https: const BookCardList = async () => {
+
+const BookCardList = async () => {
   const response = await fetch(
     "https://book-store-server-green.vercel.app/books",
     {
