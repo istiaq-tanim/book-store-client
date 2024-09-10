@@ -15,7 +15,7 @@ const PaymentList = async () => {
   const user = await userInfo();
 
   const response = await fetch(
-    `http://localhost:5000/payment?email=${user?.email}`
+    `https://book-store-server-green.vercel.app/payment?email=${user?.email}`
   );
   const { data } = await response.json();
   return (

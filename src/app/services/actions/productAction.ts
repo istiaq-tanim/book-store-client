@@ -3,7 +3,7 @@
 import { revalidatePath } from "next/cache"
 
 export const deleteBook = async (id: string) => {
-      const response = await fetch(`http://localhost:5000/book/${id}`, {
+      const response = await fetch(`https://book-store-server-green.vercel.app/book/${id}`, {
             method: "DELETE",
             headers: { "Content-Type": "application/json" }
       })
@@ -26,7 +26,7 @@ export type TSaveBook = {
 }
 
 export const addProduct = async (product: TSaveBook) => {
-      const response = await fetch("http://localhost:5000/addBook", {
+      const response = await fetch("https://book-store-server-green.vercel.app/addBook", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(product),
@@ -38,7 +38,7 @@ export const addProduct = async (product: TSaveBook) => {
 }
 
 export const editProduct = async (product: TSaveBook, id: string) => {
-      const response = await fetch(`http://localhost:5000/book/${id}`, {
+      const response = await fetch(`https://book-store-server-green.vercel.app/book/${id}`, {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(product),
