@@ -3,24 +3,21 @@
 import { userInfo } from "@/app/(withoutMainLayout)/action/authAction";
 import { createContext, useContext, useEffect, useState } from "react";
 
-type TUser = {
-  email: string;
-  role: string;
-};
-
-const AuthContext = createContext<any>({
+export const AuthContext = createContext<any>({
   user: null,
   setUser: () => {},
 });
 
-export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
+export const AuthProvider = ({ children }: any) => {
   const [user, setUser] = useState<any>(null);
-  const fetch = async () => {
-    const response = await userInfo();
-    setUser(response);
+
+  const x = async () => {
+    const res = await userInfo();
+    setUser(res);
   };
+
   useEffect(() => {
-    fetch();
+    x();
   }, []);
 
   return (

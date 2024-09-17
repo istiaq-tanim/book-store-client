@@ -1,4 +1,10 @@
-import { BarChart, BookOpen, BookPlus, ShoppingBag } from "lucide-react";
+import {
+  BarChart,
+  BookOpen,
+  BookPlus,
+  ClipboardList,
+  ShoppingBag,
+} from "lucide-react";
 import { USER_ROLE } from "../constant/role";
 import { MenuItem, UserRole } from "../types/common";
 
@@ -22,6 +28,11 @@ export const sideBarMenu = (role: UserRole): MenuItem[] => {
           icon: BookPlus,
           label: "Add Books",
           href: `${role}/addBooks`,
+        },
+        {
+          icon: ClipboardList,
+          label: "Manage Order",
+          href: `${role}/manageOrder`,
         }
       );
       break;

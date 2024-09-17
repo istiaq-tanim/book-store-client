@@ -99,8 +99,13 @@ export const cartSlice = createSlice({
       state.totalAmount = total;
       state.totalQuantity = quantity;
     },
+    removeFullItem: (state) => {
+      state.items = [];
+      Cookies.set("carts", JSON.stringify(state.items));
+    },
   },
 });
 
-export const { addItem, removeItem, decrement, getTotal } = cartSlice.actions;
+export const { addItem, removeItem, decrement, getTotal, removeFullItem } =
+  cartSlice.actions;
 export default cartSlice.reducer;

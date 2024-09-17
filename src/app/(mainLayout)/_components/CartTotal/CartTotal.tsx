@@ -13,6 +13,7 @@ const CartTotal = () => {
   useEffect(() => {
     dispatch(getTotal());
   }, [cart, dispatch]);
+
   return (
     <div className="bg-gray-100 rounded-md p-4 md:sticky top-0">
       <ul className="text-gray-800 mt-8 space-y-4">
@@ -28,7 +29,7 @@ const CartTotal = () => {
       </ul>
 
       <div className="mt-8 space-y-2">
-        <Link href="checkOut">
+        <Link href="/checkOut">
           <button
             type="button"
             className="text-sm px-4 py-2.5 w-full font-semibold tracking-wide bg-blue-600 hover:bg-blue-700 text-white rounded-md"

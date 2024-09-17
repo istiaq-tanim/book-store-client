@@ -47,4 +47,16 @@ export const editProduct = async (product: TSaveBook, id: string) => {
       revalidatePath("/dashboard/admin/books")
       const result = response.json()
       return result
+}
+
+export const editOrder = async (id: string) => {
+      const response = await fetch(`https://book-store-server-green.vercel.app/orders/${id}`, {
+            method: "PATCH",
+            headers: {
+                  "Content-Type": "application/json",
+            },
+      });
+      revalidatePath("/dashboard/admin/manageOrder")
+      const result = response.json()
+      return result
 } 

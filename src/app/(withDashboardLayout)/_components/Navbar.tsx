@@ -8,15 +8,13 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { useAuth } from "@/lib/AuthProvider";
 import { LogOut } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { MobileSidebar } from "./MobileSidebar";
 
-export const Navbar = () => {
+export const Navbar = ({ email }: { email: string }) => {
   const router = useRouter();
-  const { user } = useAuth();
   const handleLogout = async () => {
     await logOut();
     router.push("/");
@@ -42,7 +40,7 @@ export const Navbar = () => {
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end" className="w-56 mt-4">
             <DropdownMenuItem className="cursor-pointer">
-              <span>{user?.email}</span>
+              <span>{email}</span>
             </DropdownMenuItem>
             <DropdownMenuItem className="cursor-pointer">
               <button
