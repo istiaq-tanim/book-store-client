@@ -4,7 +4,7 @@ import Image from "next/image";
 const UserDashboardPage = async () => {
   const user = await userInfo();
   const response = await fetch(
-    `https://book-store-server-green.vercel.app/statistic?email=${user?.email}`
+    `http://localhost:5000/statistic?email=${user?.email}`
   );
   const result = await response.json();
   console.log(result);

@@ -32,12 +32,9 @@ export interface BookItem {
 }
 
 const BookCardList = async () => {
-  const response = await fetch(
-    "https://book-store-server-green.vercel.app/books",
-    {
-      cache: "no-store",
-    }
-  );
+  const response = await fetch("http://localhost:5000/books", {
+    cache: "no-store",
+  });
   const items = await response.json();
   return (
     <div className="container my-20">
