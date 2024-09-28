@@ -4,12 +4,16 @@ import Image from "next/image";
 const UserDashboardPage = async () => {
   const user = await userInfo();
   const response = await fetch(
-    `http://localhost:5000/statistic?email=${user?.email}`
+    `https://book-store-server-green.vercel.app/statistic?email=${user?.email}`
   );
   const result = await response.json();
-  console.log(result);
   return (
     <div className="p-20">
+      <div className="flex justify-center items-center">
+        <h3 className="py-16 text-2xl bg-gradient-to-tr from-emerald-600 to-green-300 inline-block text-transparent bg-clip-text">
+          Welcome to User Dashboard
+        </h3>
+      </div>
       <div className="mb-12 grid gap-y-10 gap-x-6 md:grid-cols-2 xl:grid-cols-3">
         <div className="relative flex flex-col bg-clip-border rounded-xl bg-white text-gray-700 shadow-md">
           <div className="bg-clip-border mx-4 rounded-xl overflow-hidden bg-gradient-to-tr from-blue-500 to-blue-200 text-white shadow-blue-400/40 shadow-lg absolute -mt-4 grid h-16 w-16 place-items-center">

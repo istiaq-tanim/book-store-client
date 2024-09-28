@@ -40,13 +40,16 @@ const CheckOutForm = ({ user }: { user: string }) => {
     };
 
     try {
-      const response = await fetch("http://localhost:5000/order", {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(orderItem),
-      });
+      const response = await fetch(
+        "https://book-store-server-green.vercel.app/order",
+        {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(orderItem),
+        }
+      );
       if (!response.ok) {
         throw new Error("Failed to submit form");
       }

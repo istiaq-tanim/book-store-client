@@ -12,7 +12,7 @@ const NewRelease = () => {
   useEffect(() => {
     const fetchBooks = async () => {
       const response = await fetch(
-        `http://localhost:5000/newRelease?query=${activeTab}`
+        `https://book-store-server-green.vercel.app/newRelease?query=${activeTab}`
       );
       const items = await response.json();
       setBooks(items?.data);

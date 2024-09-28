@@ -1,7 +1,9 @@
 import Image from "next/image";
 
 const AdminDashboardPage = async () => {
-  const response = await fetch(`http://localhost:5000/admin-stat`);
+  const response = await fetch(
+    `https://book-store-server-green.vercel.app/admin-stat`
+  );
   const result = await response.json();
   console.log(result);
   return (

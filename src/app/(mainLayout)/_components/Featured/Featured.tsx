@@ -12,7 +12,7 @@ const Featured = () => {
   useEffect(() => {
     const fetchBooks = async () => {
       const response = await fetch(
-        `http://localhost:5000/featuredBook?query=${activeTab}`
+        `https://book-store-server-green.vercel.app/featuredBook?query=${activeTab}`
       );
       const items = await response.json();
       setBooks(items?.data);
